@@ -51,7 +51,10 @@ fig.add_trace(go.Scatter3d(x=node_x, y=node_y, z=node_z, mode='text', text=node_
                            textfont=dict(size=8, color='rgb(255, 255, 255)'), hoverinfo='none', showlegend=False))
 
 # Set axis labels and title
-fig.update_layout(scene=dict(xaxis_title='X', yaxis_title='Y', zaxis_title='Z'),
+fig.update_layout(scene=dict(xaxis_title='X', yaxis_title='Y', zaxis_title='Z',
+                             xaxis=dict(color='white'),  # Set X-axis label color to white
+                             yaxis=dict(color='white'),  # Set Y-axis label color to white
+                             zaxis=dict(color='white')),
                   width=800, height=600)
 
 # Add a cosmic space background
