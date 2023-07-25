@@ -58,7 +58,10 @@ fig.add_trace(go.Scatter3d(x=node_x, y=node_y, z=node_z, mode='text', text=node_
                            textfont=dict(size=12, color='rgb(0, 0, 0)')))
 
 # Set axis labels and title
-fig.update_layout(scene=dict(xaxis_title='X', yaxis_title='Y', zaxis_title='Z'),
+fig.update_layout(scene=dict(xaxis_title='X', yaxis_title='Y', zaxis_title='Z',
+                             xaxis=dict(color='white'),  # Set X-axis label color to white
+                             yaxis=dict(color='white'),  # Set Y-axis label color to white
+                             zaxis=dict(color='white')),  # Set Z-axis label color to white
                   title='Creative 3D Visualization of Hamiltonian Cycle')
 
 # Add a futuristic background
