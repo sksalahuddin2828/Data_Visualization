@@ -2,18 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-def generate_fermat_solutions(limit):
-    solutions = []
+def generate_pythagorean_triples(limit):
+    triples = []
     for x in range(1, limit):
         for y in range(x, limit):
-            z = np.cbrt(x**3 + y**3)
+            z = np.sqrt(x**2 + y**2)
             if z == int(z):
-                solutions.append((x, y, int(z)))
-    return solutions
-
-# Generate and plot integer solutions for x³ + y³ = z³
-fermat_solutions = generate_fermat_solutions(limit)
-plot_pythagorean_triples(fermat_solutions)
+                triples.append((x, y, int(z)))
+    return triples
 
 def plot_pythagorean_triples(triples):
     fig = plt.figure()
