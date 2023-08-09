@@ -34,3 +34,7 @@ plt.annotate('Maximum Wave Speed', xy=(150, np.max(wave_speed_values)),
              fontsize=12)
 
 plt.show()
+
+
+# Answer: Derived Wave Speed Equation: sqrt(FT/mu)
+#         Calculated Wave Speed: 100.000000000000
