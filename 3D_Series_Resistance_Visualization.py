@@ -1,3 +1,7 @@
+# 1. Series and Parallel Resistance:
+# (a) Series Resistance (R1 + R2):
+# When two resistors, R1 and R2, are connected in series, their resistances simply add up:
+
 def series_resistance(R1, R2):
     return R1 + R2
 
@@ -6,6 +10,9 @@ R2 = 10
 
 series_result = series_resistance(R1, R2)
 print(f"Series Resistance: {series_result}")
+
+# (b) Parallel Resistance (1 / R_parallel = 1 / R1 + 1 / R2):
+# When two resistors, R1 and R2, are connected in parallel, their reciprocals add up:
 
 def parallel_resistance(R1, R2):
     return 1 / (1 / R1 + 1 / R2)
