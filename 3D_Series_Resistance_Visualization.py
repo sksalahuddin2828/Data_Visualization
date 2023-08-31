@@ -1,3 +1,31 @@
+def series_resistance(R1, R2):
+    return R1 + R2
+
+R1 = 1000  # Example values
+R2 = 10
+
+series_result = series_resistance(R1, R2)
+print(f"Series Resistance: {series_result}")
+
+def parallel_resistance(R1, R2):
+    return 1 / (1 / R1 + 1 / R2)
+
+parallel_result = parallel_resistance(R1, R2)
+print(f"Parallel Resistance: {parallel_result}")
+
+def find_second_resistance(total_resistance, first_resistance):
+    return 1 / (1 / total_resistance - 1 / first_resistance)
+
+total_resistance = 150
+first_resistance = 145
+
+second_resistance = find_second_resistance(total_resistance, first_resistance)
+print(f"Second Resistance: {second_resistance}")
+
+# Answer: Series Resistance: 1010
+#         Parallel Resistance: 9.900990099009901
+#         Second Resistance: -4350.00000000001
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
