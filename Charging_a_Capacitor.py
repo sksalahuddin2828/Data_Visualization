@@ -1,3 +1,5 @@
+# $Q(t) = Q_0 \left(1 - e^{-\frac{t}{\tau}}\right)$
+
 import numpy as np
 import matplotlib.pyplot as plt
 
