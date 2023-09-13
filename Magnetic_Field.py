@@ -76,3 +76,57 @@ fig.update_layout(scene=dict(xaxis_title='X', yaxis_title='Y', zaxis_title='Z'))
 
 # Show the interactive plotly figure
 fig.show()
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# Constants
+mass_U235 = 3.90e-25  # Mass of uranium-235 ion (kg)
+mass_U238 = 3.95e-25  # Mass of uranium-238 ion (kg)
+velocity = 3.00e5      # Velocity of ions (m/s)
+magnetic_field = 0.250  # Magnetic field strength (T)
+charge_U235 = 3        # Charge of uranium-235 ion
+charge_U238 = 3        # Charge of uranium-238 ion
+
+# Calculate radius of semicircle path for each ion
+radius_U235 = (mass_U235 * velocity) / (charge_U235 * magnetic_field)
+radius_U238 = (mass_U238 * velocity) / (charge_U238 * magnetic_field)
+
+# Calculate the separation between their paths when they hit a target
+separation = radius_U238 - radius_U235
+
+# Create a function to calculate positions of ions over time
+def calculate_positions(time):
+    angle_U235 = (velocity * time) / radius_U235
+    angle_U238 = (velocity * time) / radius_U238
+    x_U235 = radius_U235 * np.cos(angle_U235)
+    y_U235 = radius_U235 * np.sin(angle_U235)
+    x_U238 = radius_U238 * np.cos(angle_U238)
+    y_U238 = radius_U238 * np.sin(angle_U238)
+    return x_U235, y_U235, x_U238, y_U238
+
+# Create an animation of ion paths
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.set_xlim(-1.2 * radius_U238, 1.2 * radius_U238)
+ax.set_ylim(-1.2 * radius_U238, 1.2 * radius_U238)
+line_U235, = ax.plot([], [], label='U-235 Path', linestyle='-', marker='o')
+line_U238, = ax.plot([], [], label='U-238 Path', linestyle='-', marker='o')
+plt.legend(loc='upper right')
+
+def update(frame):
+    x_U235, y_U235, x_U238, y_U238 = calculate_positions(frame)
+    line_U235.set_data(x_U235, y_U235)
+    line_U238.set_data(x_U238, y_U238)
+    return line_U235, line_U238
+
+ani = FuncAnimation(fig, update, frames=np.linspace(0, 2 * np.pi, 100), interval=100)
+plt.xlabel('X Position (m)')
+plt.ylabel('Y Position (m)')
+plt.title('Path of U-235 and U-238 Ions in a Magnetic Field')
+plt.grid()
+plt.show()
+
+# Print the separation distance
+print(f"Separation between paths: {separation:.4f} meters")
