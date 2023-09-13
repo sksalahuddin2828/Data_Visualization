@@ -27,4 +27,9 @@ plt.xlabel("X-coordinate (m)")
 plt.ylabel("Y-coordinate (m)")
 plt.grid()
 plt.axis('equal')
+
+# Adding annotations for better visualization
+plt.text(0, 0, 'Starship Enterprise', ha='center', va='center', fontsize=12, color='blue')
+plt.text(radius, 0, 'Antiproton Path', ha='center', va='center', fontsize=12, color='red')
+
 plt.show()
